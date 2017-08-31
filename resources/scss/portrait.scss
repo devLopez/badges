@@ -1,0 +1,130 @@
+@import 'mixins';
+@import 'variables';
+
+.page {
+    @include pageBreak();
+}
+
+.no-back-page {
+    @include left();
+
+    margin-right: 5px;
+    width: 62mm !important;
+}
+
+.vertical-card {
+    @extend .card;
+
+    height: 98mm;
+    margin: 4px;
+    width: 124mm;
+
+    .front-page {
+        @include left();
+
+        height: 58mm;
+        padding: $horizontal-padding;
+        width: 56mm;
+
+        .logo {
+            max-height: 16mm;
+
+            &> img {
+                display: block;
+                height: 16mm;
+                margin: 0 auto;
+            }
+        }
+
+        .picture {
+            margin-top: 25px;
+            max-height: 45mm;
+
+            &> img {
+                display: block;
+                height: 45mm;
+                margin: 0 auto;
+                width: 35mm;
+            }
+        }
+
+        .user-info {
+            font-size: 11px;
+            min-height: 24mm;
+            position: relative;
+
+            .user-info-wrapper {
+                bottom: 0;
+                min-width: 100%;
+                position: absolute;
+            }
+
+            .user-name {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .card-info {
+                font-size: 11px;
+                height: 15px;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .back-page {
+        @include right();
+
+        height: 58mm;
+        padding: $horizontal-padding;
+        width: 56mm;
+
+        .card-info {
+            font-size: 9px;
+            height: 18px;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        &> .user-info {
+            height: 46px;
+            margin-top: 15px;
+        }
+
+        .company-info {
+            font-size: 10px;
+            margin-top: 20px;
+            min-height: 30px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .general-info{
+            font-size: 11px;
+            margin-top: 20px;
+            min-height: 30px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .codebar {
+            height: 110px;
+            width: 100%;
+
+            &> .codebar-wrapper {
+                display: block;
+                margin: 0 auto;
+                min-height: 100%;
+                position: relative;
+                width: 200px;
+
+                &> img {
+                    bottom: 0;
+                    position: absolute;
+
+                    @include codebar();
+                }
+            }
+        }
+    }
+}

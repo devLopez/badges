@@ -1,0 +1,33 @@
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.card {
+    border: 1px solid #ccc;
+    font-family: Arial;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+@mixin left() {
+    float: left;
+}
+
+@mixin right() {
+    float: right;
+}
+
+@mixin codebar() {
+    width: 100%;
+    height: 50px;
+}
+
+@mixin pageBreak() {
+    height: 1000px !important;
+    display: block;
+    page-break-before: always;
+}

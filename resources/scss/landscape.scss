@@ -1,0 +1,121 @@
+@import 'mixins';
+@import 'variables';
+
+.page {
+    @include pageBreak();
+}
+
+.no-back-page {
+    @include left();
+
+    margin-right: 2px;
+    width: 98mm !important;
+}
+
+.horizontal-card {
+    @extend .card;
+
+    height: 62mm;
+    width: 196mm;
+
+    .front-page {
+        @include left();
+
+        height: 58mm;
+        padding: $horizontal-padding;
+        width: 92mm;
+
+        .images {
+            height: 160px;
+            width: 100%;
+
+            .logo {
+              height: 16mm;
+              position: relative;
+            }
+
+            .picture {
+                @include right();
+
+                height: 41mm;
+                left: 0mm;
+                position: relative;
+                top: 0mm;
+                width: 30mm;
+            }
+        }
+
+        .user-info {
+            font-size: 11px;
+            height: 50px;
+            position: relative;
+
+            .user-name {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .card-info {
+                font-size: 11px;
+                height: 15px;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .back-page {
+        @include right();
+
+        height: 58mm;
+        padding: $horizontal-padding;
+        width: 92mm;
+
+        .card-info {
+            font-size: 11px;
+            height: 15px;
+            max-width: 100%;
+        }
+
+        .card-type {
+            font-size: 8px;
+        }
+
+        &> .user-info {
+            height: 33px;
+            margin-top: 8px;
+        }
+
+        .company-info {
+            font-size: 10px;
+            margin-top: 15px;
+            min-height: 30px;
+            text-align: center;
+        }
+
+        .general-info{
+            font-size: 11px;
+            margin-top: 15px;
+            min-height: 30px;
+        }
+
+        .codebar {
+            height: 55px;
+            width: 100%;
+
+            &> .codebar-wrapper {
+                display: block;
+                margin: 0 auto;
+                min-height: 100%;
+                position: relative;
+                width: 200px;
+
+                &> img {
+                    bottom: 0;
+                    position: absolute;
+
+                    @include codebar();
+                }
+            }
+        }
+    }
+}

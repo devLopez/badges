@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "cartoes",
+  "version": "1.0.0",
+  "description": "Criacao de cartoes e crachas",
+  "main": "index.js",
+  "author": "Matheus Lopes Santos <fale_com_lope@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}

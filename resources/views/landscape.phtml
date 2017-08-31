@@ -1,0 +1,71 @@
+<meta charset="utf-8">
+<style>
+    <?php echo $css ?>
+</style>
+
+<?php
+    $pages = ($hasBackPage) ? $members->chunk(4): $members->chunk(8);
+?>
+
+<?php foreach ($pages as $members) : ?>
+    <div class="page">
+        <?php foreach ($members as $member) : ?>
+
+            <div class="card horizontal-card <?php echo (!$hasBackPage)  ? 'no-back-page': '' ?>">
+                <div class="front-page">
+                    <div class="images">
+                        <img src="<?php echo $company->logo ?>" alt="" class="logo">
+                        <img src="<?php echo $member->photo ?>" alt="<?php echo $member->name ?>" class="picture">
+                    </div>
+
+                    <div class="user-info">
+                        <span class="user-name"><?php echo $member->name ?></span>
+                        <hr>
+                        <div class="card-info">
+                            <span class="left">Emitido em: <?php echo date('d/m/Y') ?></span>
+                            <span class="right"><?php echo $member->regNumber ?></span>
+                        </div>
+                    </div>
+                </div>
+
+                <?php if($hasBackPage) :?>
+                    <div class="back-page">
+                        <div class="card-info">
+                        <span class="left">
+                            <?php echo str_pad(date('Ymd'), 11, 0, STR_PAD_LEFT)?>
+                        </span>
+                            <span class="right card-type">
+                            <?php echo strtoupper($company->type) ?>
+                        </span>
+                        </div>
+                        <div class="user-info">
+                            <?php $i = 0; ?>
+                            <?php foreach ($member->userInfo as $key => $info) : ?>
+                            <span class="<?php echo ($i % 2 === 0) ? 'left' : 'right' ?>">
+                                <b><?php echo $key ?>: </b> <?php echo $info?>
+
+                                <?php $i++?>
+                                </span><?php echo ($i % 2 ==- 0) ? '<br>' : '' ?>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="company-info">
+                            <?php foreach ($company->companyInfo as $c) : ?>
+                                <?php echo $c?><br>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="general-info">
+                            <?php foreach ($company->cardInfo as $c) : ?>
+                                * <?php echo $c ?><br>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="codebar">
+                            <div class="codebar-wrapper">
+                                <img src="<?php echo $member->barCode ?>">
+                            </div>
+                        </div>
+                    </div>
+                <?php endif;?>
+            </div>
+        <?php endforeach;?>
+    </div>
+<?php endforeach;?>
