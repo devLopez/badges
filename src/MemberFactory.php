@@ -9,7 +9,7 @@
      * MemberFactory
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.0.0
+     * @version 1.0.1
      * @since   20/08/2017
      * @package Igrejanet\Badges
      */
@@ -18,7 +18,7 @@
         /**
          * @return Members
          */
-        public static function createMembers() : Members
+        public static function createMembers()
         {
             $collection = new Collection();
 

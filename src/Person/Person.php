@@ -51,7 +51,7 @@
          * @param   string|null  $photo
          * @param   array  $userInfo
          */
-        public function __construct($name, $job, int $regNumber, $photo = null, array $userInfo = [])
+        public function __construct($name, $job, $regNumber, $photo = null, array $userInfo = [])
         {
             $this->name         = $name;
             $this->job          = $job;

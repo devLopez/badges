@@ -16,8 +16,8 @@
      * Badge
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 2.0.0
-     * @since   29/08/2017
+     * @version 2.1.0
+     * @since   30/08/2017
      * @package Igrejanet\Badges\Badge
      */
     class Badge implements BadgeContract
@@ -87,7 +87,7 @@
          * @param   string  $css
          * @return  $this
          */
-        public function loadCSS(string $css)
+        public function loadCSS($css)
         {
             $this->css = file_get_contents($css);
 
@@ -99,7 +99,7 @@
          * @return  $this
          * @throws  WrongOrientationException
          */
-        public function loadView(string $view = null)
+        public function loadView($view = null)
         {
             if($view) {
                 $this->view = $view;
@@ -128,7 +128,7 @@
          * @return  Response
          * @throws  EmptyMembersException
          */
-        public function generate($download = false, $filename = 'cartoes.pdf') : Response
+        public function generate($download = false, $filename = 'cartoes.pdf')
         {
             $this->loadView();
 
@@ -151,7 +151,7 @@
          * @param   string $filename
          * @return  Response
          */
-        public function toPdf($download = false, $filename = 'cartoes.pdf') : Response
+        public function toPdf($download = false, $filename = 'cartoes.pdf')
         {
             $file = ($download) ? 'attachment' : 'inline';
 

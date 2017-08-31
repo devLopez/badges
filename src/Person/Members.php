@@ -9,7 +9,7 @@
      * Members
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.0.0
+     * @version 1.0.1
      * @since   17/08/2017
      * @package Igrejanet\Badges
      */
@@ -35,7 +35,7 @@
          * @param   string|null  $photo
          * @param   array  $userInfo
          */
-        public function add($name, $job, int $regNumber, $photo = null, array $userInfo = [])
+        public function add($name, $job, $regNumber, $photo = null, array $userInfo = [])
         {
             $this->members->push(
                 new Person($name, $job, $regNumber, $photo, $userInfo)
@@ -45,7 +45,7 @@
         /**
          * @return  Collection
          */
-        public function retrieve() : Collection
+        public function retrieve()
         {
             return $this->members;
         }

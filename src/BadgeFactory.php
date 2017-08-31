@@ -11,8 +11,8 @@
      * BadgeFactory
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.1.0
-     * @since   23/08/2017
+     * @version 1.1.1
+     * @since   30/08/2017
      * @package Igrejanet\Badges
      */
     class BadgeFactory
@@ -29,7 +29,7 @@
             Company $company,
             $orientation = 'landscape',
             $withBackPage = true
-        ) : Badge {
+        ) {
             $pdf = new Pdf('/usr/local/bin/wkhtmltopdf');
 
             $pdf->setOptions([

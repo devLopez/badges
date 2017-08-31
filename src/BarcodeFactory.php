@@ -35,7 +35,7 @@
 
             $renderer = Barcode::factory('code39', 'image', $config)->draw();
 
-            $file = __DIR__ . './../resources/img/barcode.jpg';
+            $file = __DIR__ . '/../resources/img/barcode.jpg';
 
             imagejpeg($renderer, $file, 100);
 

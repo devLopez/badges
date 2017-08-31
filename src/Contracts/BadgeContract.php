@@ -2,7 +2,6 @@
 
     namespace Igrejanet\Badges\Contracts;
 
-    use Illuminate\Http\Response;
     use Knp\Snappy\Pdf;
     use Igrejanet\Badges\Person\Company;
 
@@ -16,11 +15,11 @@
             $withBackPage = true
         );
 
-        public function loadCSS(string $css);
+        public function loadCSS($css);
 
-        public function loadView(string $view = null);
+        public function loadView($view = null);
 
-        public function generate() : Response;
+        public function generate();
 
-        public function toPdf() : Response;
+        public function toPdf();
     }
