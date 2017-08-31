@@ -11,7 +11,7 @@
      * BadgeFactory
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.1.1
+     * @version 1.1.2
      * @since   30/08/2017
      * @package Igrejanet\Badges
      */
@@ -30,7 +30,7 @@
             $orientation = 'landscape',
             $withBackPage = true
         ) {
-            $pdf = new Pdf('/usr/local/bin/wkhtmltopdf');
+            $pdf = new Pdf(__DIR__ . '/../vendor/bin/wkhtmltopdf-amd64');
 
             $pdf->setOptions([
                 'margin-left' => 1,
