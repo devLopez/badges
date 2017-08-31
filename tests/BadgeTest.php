@@ -5,8 +5,8 @@
     use Igrejanet\Badges\Contracts\BadgeContract;
     use Igrejanet\Badges\MemberFactory;
     use Igrejanet\Badges\Person\Company;
-use Illuminate\Http\Response;
-use PHPUnit\Framework\TestCase;
+    use Illuminate\Http\Response;
+    use PHPUnit\Framework\TestCase;
 
     class BadgeTest extends TestCase
     {
@@ -28,8 +28,8 @@ use PHPUnit\Framework\TestCase;
         {
             $members = MemberFactory::createMembers();
 
-            $members->add('Matheus', 'Analista', 8364, 'matheus.jpg', ['RG' => 'MG 11.111.111']);
-            $members->add('Lopes', 'DBA', 8367, 'loeps.jpg', ['RG' => 'MG 14.131.121']);
+            $members->add('Matheus', 'Analista', 8364, 'matheus.jpg', ['RG' => 'MG 11.111.111'], false);
+            $members->add('Lopes', 'DBA', 8367, 'loeps.jpg', ['RG' => 'MG 14.131.121'], false);
 
             return $members;
         }

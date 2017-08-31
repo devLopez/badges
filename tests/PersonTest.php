@@ -15,7 +15,7 @@
                 'RG' => 'MG 12.111.111'
             ];
 
-            $person = new Person($name, $job, $regNumber, $photo, $info);
+            $person = new Person($name, $job, $regNumber, $photo, $info, false);
 
             $this->assertInstanceOf(Person::class, $person);
             $this->assertEquals($name, $person->name);

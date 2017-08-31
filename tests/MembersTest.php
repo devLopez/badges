@@ -18,8 +18,8 @@
         {
             $members = MemberFactory::createMembers();
 
-            $members->add('Matheus', 'Analista', 8364, 'matheus.jpg', ['RG' => 'MG 11.111.111']);
-            $members->add('Lopes', 'DBA', 8367, 'loeps.jpg', ['RG' => 'MG 14.131.121']);
+            $members->add('Matheus', 'Analista', 8364, 'matheus.jpg', ['RG' => 'MG 11.111.111'], false);
+            $members->add('Lopes', 'DBA', 8367, 'loeps.jpg', ['RG' => 'MG 14.131.121'], false);
 
             $filledMember = $members->retrieve()->first();
 
