@@ -58,7 +58,7 @@ $members->add('Matheus', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']);
 $members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'DBA']);
 
 // Gera as carteirinhas
-$badge      = new Badge(Bootstrap::getPdf());
+$badge      = new Badge($pdf);
 $response   = $badge->setMembers($members)
                     ->setCompany($company)
                     ->generate();
