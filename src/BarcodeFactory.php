@@ -8,8 +8,8 @@
      * BarcodeFactory
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.0.0
-     * @since   24/08/2017
+     * @version 1.1.0
+     * @since   02/09/2017
      * @package Igrejanet\Badges
      */
     class BarcodeFactory
@@ -18,7 +18,7 @@
          * @param   string  $code
          * @return  string
          */
-        public static function generate($code)
+        public static function generate($code) : string
         {
             $config = [
                 'fontSize'	=> 10,

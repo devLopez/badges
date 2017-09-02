@@ -10,5 +10,5 @@
 
         public function add($name, $job, $regNumber, $photo = null, array $userInfo = [], $barcode = true);
 
-        public function retrieve();
+        public function retrieve() : Collection;
     }

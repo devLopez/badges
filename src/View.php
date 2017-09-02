@@ -1,30 +1,30 @@
 <?php
 
-    namespace Igrejanet\Badges;
+namespace Igrejanet\Badges;
 
+/**
+ * View
+ *
+ * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
+ * @version 1.2.0
+ * @since   02/09/2017
+ * @package Igrejanet\Badges
+ */
+class View
+{
     /**
-     * View
-     *
-     * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.1.0
-     * @since   30/08/2017
-     * @package Igrejanet\Badges
+     * @param   string  $view
+     * @param   array  $data
+     * @return  string
      */
-    class View
+    public static function render($view, array $data) : string
     {
-        /**
-         * @param   string  $view
-         * @param   array  $data
-         * @return  string
-         */
-        public static function render($view, array $data)
-        {
-            extract($data);
+        extract($data);
 
-            ob_start();
+        ob_start();
 
-            include $view;
+        include $view;
 
-            return ob_get_clean();
-        }
+        return ob_get_clean();
     }
+}

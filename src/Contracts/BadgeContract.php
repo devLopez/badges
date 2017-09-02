@@ -7,13 +7,15 @@
 
     interface BadgeContract
     {
-        public function __construct(
-            MembersContract $members,
-            Company $company,
-            Pdf $pdf,
-            $orientation = 'landscape',
-            $withBackPage = true
-        );
+        public function __construct(Pdf $pdf);
+
+        public function setMembers(MembersContract $members);
+
+        public function setCompany(Company $company);
+
+        public function setOrientation(string $orientation);
+
+        public function withBackPage(bool $withBackPage);
 
         public function loadCSS($css);
 
