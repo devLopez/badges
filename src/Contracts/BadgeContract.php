@@ -1,27 +1,28 @@
 <?php
 
-    namespace Igrejanet\Badges\Contracts;
+namespace Igrejanet\Badges\Contracts;
 
-    use Knp\Snappy\Pdf;
-    use Igrejanet\Badges\Person\Company;
+use Illuminate\Http\Response;
+use Knp\Snappy\Pdf;
+use Igrejanet\Badges\Person\Company;
 
-    interface BadgeContract
-    {
-        public function __construct(Pdf $pdf);
+interface BadgeContract
+{
+    public function __construct(Pdf $pdf);
 
-        public function setMembers(MembersContract $members);
+    public function setMembers(MembersContract $members);
 
-        public function setCompany(Company $company);
+    public function setCompany(Company $company);
 
-        public function setOrientation(string $orientation);
+    public function setOrientation(string $orientation);
 
-        public function withBackPage(bool $withBackPage);
+    public function withBackPage(bool $withBackPage);
 
-        public function loadCSS($css);
+    public function loadCSS(string $css);
 
-        public function loadView($view = null);
+    public function loadView(string $view = null);
 
-        public function generate();
+    public function generate() : Response;
 
-        public function toPdf();
-    }
+    public function toPdf() : Response;
+}

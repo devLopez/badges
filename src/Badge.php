@@ -123,7 +123,7 @@ class Badge implements BadgeContract
      * @param   string  $css
      * @return  $this
      */
-    public function loadCSS($css)
+    public function loadCSS(string $css)
     {
         $this->css = file_get_contents($css);
 
@@ -135,7 +135,7 @@ class Badge implements BadgeContract
      * @return  $this
      * @throws  WrongOrientationException
      */
-    public function loadView($view = null)
+    public function loadView(string $view = null)
     {
         if($view) {
             $this->view = $view;
