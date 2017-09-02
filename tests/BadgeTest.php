@@ -26,8 +26,8 @@ class BadgeTest extends TestCase
 
     private function getPdfLocation()
     {
-        return new Pdf(__DIR__ . '../vendor/bin/wkhtmltopdf-amd64');
-        //return new Pdf('/usr/local/bin/wkhtmltopdf');
+        return __DIR__ . '../vendor/bin/wkhtmltopdf-amd64';
+        //return '/usr/local/bin/wkhtmltopdf';
     }
 
     private function getMembers()

@@ -164,7 +164,7 @@ class Badge implements BadgeContract
      * @return  Response
      * @throws  EmptyMembersException
      */
-    public function generate($download = false, $filename = 'cartoes.pdf')
+    public function generate($download = false, $filename = 'cartoes.pdf') : Response
     {
         $this->loadView();
 
@@ -179,7 +179,7 @@ class Badge implements BadgeContract
 
         $this->html = View::render($this->view, compact('css', 'members', 'hasBackPage', 'company'));
 
-        return $this->toPdf();
+        return $this->toPdf($download, $filename);
     }
 
     /**
@@ -187,7 +187,7 @@ class Badge implements BadgeContract
      * @param   string $filename
      * @return  Response
      */
-    public function toPdf($download = false, $filename = 'cartoes.pdf')
+    public function toPdf($download = false, $filename = 'cartoes.pdf') : Response
     {
         $file = ($download) ? 'attachment' : 'inline';
 
