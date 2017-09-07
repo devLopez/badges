@@ -3,13 +3,14 @@
 namespace Igrejanet\Badges\Person;
 
 use Igrejanet\Badges\BarcodeFactory;
+use Igrejanet\Badges\Formatters\NameFormatter;
 
 /**
  * Person
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.0.1
- * @since   30/08/2017
+ * @version 1.1.0
+ * @since   07/09/2017
  * @package Igrejanet\Badges\Person
  */
 class Person
@@ -18,6 +19,11 @@ class Person
      * @var string
      */
     public $name;
+
+    /**
+     * @var string
+     */
+    public $shortName;
 
     /**
      * @var string
@@ -55,6 +61,7 @@ class Person
     public function __construct($name, $job, $regNumber, $photo = null, array $userInfo = [], $barcode = true)
     {
         $this->name         = $name;
+        $this->shortName    = (new NameFormatter)->generateName($name);
         $this->job          = $job;
         $this->regNumber    = $regNumber;
         $this->photo        = $photo;

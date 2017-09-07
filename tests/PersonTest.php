@@ -7,7 +7,7 @@
     {
         public function testPersonInstance()
         {
-            $name = 'Matheus Lopes';
+            $name = 'Matheus Lopes Santos';
             $job = 'Analista de Sistemas';
             $regNumber = 8364;
             $photo = 'Matheus.jpg';
@@ -19,6 +19,7 @@
 
             $this->assertInstanceOf(Person::class, $person);
             $this->assertEquals($name, $person->name);
+            $this->assertEquals('Matheus Lopes', $person->shortName);
             $this->assertClassHasAttribute('name', Person::class);
         }
     }

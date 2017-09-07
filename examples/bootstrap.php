@@ -37,7 +37,7 @@ class Bootstrap {
         $foto       = __DIR__.'/img/matheus.jpg';
         $members    = MemberFactory::createMembers();
 
-        $members->add('Matheus', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']);
+        $members->add('Matheus Lopes Santos', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']);
         $members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'Diácono']);
         $members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'Diácono']);
         $members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'Diácono']);
