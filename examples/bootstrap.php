@@ -11,7 +11,6 @@ class Bootstrap {
     public static function getPdf()
     {
         return new Pdf(__DIR__ . '../vendor/bin/wkhtmltopdf-amd64');
-        //return new Pdf('/usr/local/bin/wkhtmltopdf');
     }
 
     public static function generateCompany()
