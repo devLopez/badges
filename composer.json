@@ -17,7 +17,7 @@
     "require": {
         "php": ">=7.0.0",
         "illuminate/support": "5.5.*",
-        "knplabs/knp-snappy": "^0.5.0",
+        "knplabs/knp-snappy": "1.*",
         "h4cc/wkhtmltopdf-amd64": "^0.12.3",
         "zendframework/zend-barcode": "^2.6",
         "illuminate/http": "5.5.*"

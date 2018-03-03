@@ -1,6 +1,6 @@
 <?php
 
-namespace Igrejanet\Badges;
+namespace Igrejanet\Badges\Factories;
 
 use Illuminate\Support\Collection;
 use Igrejanet\Badges\Person\Members;
@@ -9,9 +9,9 @@ use Igrejanet\Badges\Person\Members;
  * MemberFactory
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.1.0
- * @since   02/09/2017
- * @package Igrejanet\Badges
+ * @version 2.0.0
+ * @since   03/03/2018
+ * @package Igrejanet\Badges\Factories
  */
 class MemberFactory
 {
