@@ -2,7 +2,7 @@
 
 use Igrejanet\Badges\Badge;
 use Igrejanet\Badges\Contracts\BadgeContract;
-use Igrejanet\Badges\MemberFactory;
+use Igrejanet\Badges\Factories\MemberFactory;
 use Igrejanet\Badges\Person\Company;
 use Illuminate\Http\Response;
 use Knp\Snappy\Pdf;

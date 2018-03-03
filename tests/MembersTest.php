@@ -1,6 +1,6 @@
 <?php
 
-    use Igrejanet\Badges\MemberFactory;
+    use Igrejanet\Badges\Factories\MemberFactory;
     use Igrejanet\Badges\Contracts\MembersContract;
     use Igrejanet\Badges\Person\Person;
     use PHPUnit\Framework\TestCase;

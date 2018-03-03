@@ -32,8 +32,8 @@
 
                 <?php if($hasBackPage) : ?>
                     <div class="back-page">
-                        <div class="card-info">
-                            <span><?php echo strtoupper($company->type) ?></span>
+                        <div class="card-info text-upper">
+                            <span><?php echo $company->type ?></span>
                             <span><?php echo str_pad(date('Ymd'), 11, 0, STR_PAD_LEFT)?></span>
                         </div>
                         <div class="user-info">

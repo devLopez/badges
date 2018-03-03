@@ -13,6 +13,10 @@
     margin-bottom: 10px;
 }
 
+.text-upper {
+    text-transform: uppercase;
+}
+
 @mixin left() {
     float: left;
 }

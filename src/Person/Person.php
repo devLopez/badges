@@ -2,7 +2,7 @@
 
 namespace Igrejanet\Badges\Person;
 
-use Igrejanet\Badges\BarcodeFactory;
+use Igrejanet\Badges\Factories\BarcodeFactory;
 use Igrejanet\Badges\Formatters\NameFormatter;
 
 /**

@@ -2,7 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
-use Igrejanet\Badges\MemberFactory;
+use Igrejanet\Badges\Factories\MemberFactory;
 use Igrejanet\Badges\Person\Company;
 use Knp\Snappy\Pdf;
 
@@ -10,6 +10,7 @@ class Bootstrap {
 
     public static function getPdf()
     {
+        //return new Pdf('/usr/local/bin/wkhtmltopdf');
         return new Pdf(__DIR__ . '../vendor/bin/wkhtmltopdf-amd64');
     }
 
