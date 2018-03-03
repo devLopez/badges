@@ -6,8 +6,8 @@ namespace Igrejanet\Badges\Formatters;
  * NameFormatter
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.0.0
- * @since   07/09/2017
+ * @version 2.0.0
+ * @since   03/03/2018
  * @package Igrejanet\Badges\Formatters
  */
 class NameFormatter
@@ -16,12 +16,12 @@ class NameFormatter
      * @param   string $pessoa
      * @return  string
      */
-    public function generateName(string $pessoa) : string
+    public static function generateName(string $pessoa) : string
     {
         $nome_formatado = '';
         $char 			= 14;
 
-        $pessoa = $this->prepareNameForGeneration($pessoa);
+        $pessoa = static::prepareNameForGeneration($pessoa);
 
         foreach ($pessoa as $key => $nome) {
             if (!(strlen($nome_formatado) + strlen($nome) < $char)) {
@@ -45,7 +45,7 @@ class NameFormatter
      * @param   string  $name
      * @return  array
      */
-    private function prepareNameForGeneration(string $name) : array
+    private static function prepareNameForGeneration(string $name) : array
     {
         return explode(' ', explode('- ', ucwords(strtolower($name)))[0]);
     }

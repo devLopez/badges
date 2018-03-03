@@ -9,8 +9,8 @@ use Igrejanet\Badges\Formatters\NameFormatter;
  * Person
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.1.0
- * @since   07/09/2017
+ * @version 1.2.0
+ * @since   03/03/2018
  * @package Igrejanet\Badges\Person
  */
 class Person
@@ -51,17 +51,18 @@ class Person
     public $barCode = '';
 
     /**
-     * @param   string $name
-     * @param   string $job
-     * @param   int|null $regNumber
-     * @param   string|null $photo
-     * @param   array $userInfo
+     * @param   string  $name
+     * @param   string  $job
+     * @param   string  $regNumber
+     * @param   null|string  $photo
+     * @param   array  $userInfo
      * @param   bool  $barcode
+     * @throws  \Zend\Barcode\Exception\ExceptionInterface
      */
     public function __construct($name, $job, $regNumber, $photo = null, array $userInfo = [], $barcode = true)
     {
         $this->name         = $name;
-        $this->shortName    = (new NameFormatter)->generateName($name);
+        $this->shortName    = NameFormatter::generateName($name);
         $this->job          = $job;
         $this->regNumber    = $regNumber;
         $this->photo        = $photo;

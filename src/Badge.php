@@ -163,6 +163,7 @@ class Badge implements BadgeContract
      * @param   string  $filename
      * @return  Response
      * @throws  EmptyMembersException
+     * @throws  WrongOrientationException
      */
     public function generate($download = false, $filename = 'cartoes.pdf') : Response
     {

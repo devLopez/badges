@@ -29,12 +29,13 @@ class Members implements MembersContract
     }
 
     /**
-     * @param   string $name
-     * @param   string $job
-     * @param   int $regNumber
-     * @param   string|null $photo
-     * @param   array $userInfo
+     * @param   string  $name
+     * @param   string  $job
+     * @param   string  $regNumber
+     * @param   string|null  $photo
+     * @param   array  $userInfo
      * @param   bool  $barcode
+     * @throws  \Zend\Barcode\Exception\ExceptionInterface
      */
     public function add($name, $job, $regNumber, $photo = null, array $userInfo = [], $barcode = true)
     {
