@@ -36,7 +36,7 @@ class BarcodeFactory
 
         $renderer = Barcode::factory('code39', 'image', $config)->draw();
 
-        $file = __DIR__ . '/../../resources/img/barcode.jpg';
+        $file = sys_get_temp_dir() . '/barcode.jpg';
 
         imagejpeg($renderer, $file, 100);
 
