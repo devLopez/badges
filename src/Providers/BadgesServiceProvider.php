@@ -21,15 +21,16 @@ use Knp\Snappy\Pdf;
 class BadgesServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
+     * @return  void
      */
-    protected $defer = true;
-
     public function boot()
     {
 
     }
 
+    /**
+     * @return  void
+     */
     public function register()
     {
         $this->app->bind(BadgeContract::class, function() {
