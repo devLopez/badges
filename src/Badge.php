@@ -14,8 +14,8 @@ use Knp\Snappy\Pdf;
  * Badge
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 3.0.0
- * @since   02/09/2017
+ * @version 3.1.0
+ * @since   05/04/2018
  * @package Igrejanet\Badges\Badge
  */
 class Badge implements BadgeContract
@@ -137,23 +137,20 @@ class Badge implements BadgeContract
      */
     public function loadView(string $view = null)
     {
-        if($view) {
+        if ( ! in_array($this->orientation, ['landscape', 'portrait']) ) {
+            throw new WrongOrientationException;
+        }
+
+        if ( $view ) {
             $this->view = $view;
 
             return $this;
         }
 
-        if($this->orientation == 'landscape') {
-            $this->view = __DIR__ . '/../resources/views/landscape.phtml';
-            $this->loadCSS(__DIR__ . '/../resources/css/landscape.css');
+        $orientation = $this->orientation;
 
-        } elseif($this->orientation == 'portrait') {
-            $this->view = __DIR__ . '/../resources/views/portrait.phtml';
-            $this->loadCSS(__DIR__ . '/../resources/css/portrait.css');
-
-        } else {
-            throw new WrongOrientationException;
-        }
+        $this->view = __DIR__ . "/../resources/views/{$orientation}.phtml";
+        $this->loadCSS(__DIR__ . "/../resources/css/{$orientation}.css");
 
         return $this;
     }
@@ -167,16 +164,16 @@ class Badge implements BadgeContract
      */
     public function generate($download = false, $filename = 'cartoes.pdf') : Response
     {
+        if ( $this->members->retrieve()->isEmpty() ) {
+            throw new EmptyMembersException;
+        }
+
         $this->loadView();
 
         $css            = $this->css;
         $members        = $this->members->retrieve();
         $hasBackPage    = $this->withBackPage;
         $company        = $this->company;
-
-        if($members->isEmpty()) {
-            throw new EmptyMembersException;
-        }
 
         $this->html = View::render($this->view, compact('css', 'members', 'hasBackPage', 'company'));
 

@@ -7,16 +7,19 @@
     $pages = ($hasBackPage) ? $members->chunk(2) : $members->chunk(6);
 ?>
 
-<?php foreach( $pages as $members ) : ?>
+<?php foreach ( $pages as $members ) : ?>
+
     <div class="page">
         <?php foreach ( $members as $member ) : ?>
+
             <div class="card vertical-card <?= ( ! $hasBackPage )  ? 'no-back-page': '' ?>">
                 <div class="front-page">
                     <div class="logo">
                         <img src="<?= $company->logo ?>" alt="">
                     </div>
                     <div class="picture">
-                        <img src="<?= $member->photo ?>" alt="<?= $member->name ?>">
+                        <?php $alt = ( $member->photo !== null ) ? $member->name : '' ?>
+                        <img src="<?= $member->photo ?>" alt="<?= $alt ?>">
                     </div>
 
                     <div class="user-info">
@@ -62,5 +65,7 @@
                 <?php endif;?>
             </div>
         <?php endforeach;?>
+
     </div>
+
 <?php endforeach; ?>

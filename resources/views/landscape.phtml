@@ -15,7 +15,10 @@
                 <div class="front-page">
                     <div class="images">
                         <img src="<?= $company->logo ?>" alt="" class="logo">
-                        <img src="<?= $member->photo ?>" alt="<?= $member->name ?>" class="picture">
+
+                        <?php $alt = ( $member->photo !== null ) ? $member->name : '' ?>
+                        <img src="<?= $member->photo ?>" alt="<?= $alt ?>" class="picture">
+
                     </div>
 
                     <div class="user-info">
