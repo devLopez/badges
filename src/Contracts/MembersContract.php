@@ -8,7 +8,17 @@
     {
         public function __construct(Collection $members);
 
-        public function add($name, $job, $regNumber, $photo = null, array $userInfo = [], $barcode = true);
+        /**
+         * @SuppressWarnings(PHPMD)
+         */
+        public function add(
+            string $name,
+            string $job,
+            string $regNumber,
+            ?string $photo = null,
+            array $userInfo = [],
+            bool $barcode = true
+        );
 
-        public function retrieve() : Collection;
+        public function retrieve(): Collection;
     }

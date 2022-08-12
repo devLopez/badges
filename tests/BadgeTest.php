@@ -16,8 +16,8 @@ class BadgeTest extends TestCase
         $company = $this->getCompany();
         $pdf     = $this->getPdfLocation();
 
-        $badge      = new Badge(new Pdf($pdf));
-        $response   = $badge->setMembers($members)->setCompany($company)->generate();
+        $badge    = new Badge(new Pdf($pdf));
+        $response = $badge->setMembers($members)->setCompany($company)->generate();
 
         $this->assertInstanceOf(Badge::class, $badge);
         $this->assertInstanceOf(BadgeContract::class, $badge);
@@ -42,8 +42,8 @@ class BadgeTest extends TestCase
 
     private function getCompany()
     {
-        $logo = 'logo.png';
-        $type = 'Carteira de Identificação Ministerial';
+        $logo        = 'logo.png';
+        $type        = 'Carteira de Identificação Ministerial';
         $companyInfo = [
             'II Igreja de Deus do Avivamento Bíblico',
             'Rua G, 336 - Vila Campos - Montes Claros - MG',

@@ -10,37 +10,23 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Knp\Snappy\Pdf;
 
-/**
- * BadgesServiceProvider
- *
- * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.0.0
- * @since   02/09/2017
- * @package Igrejanet\Badges\Providers
- */
 class BadgesServiceProvider extends ServiceProvider
 {
-    /**
-     * @return  void
-     */
-    public function boot()
+    public function boot(): void
     {
-
+        //
     }
 
-    /**
-     * @return  void
-     */
-    public function register()
+    public function register(): void
     {
-        $this->app->bind(BadgeContract::class, function() {
+        $this->app->bind(BadgeContract::class, function () {
             $binary = env('WKHTMLTOPDF_LOCATION');
             $pdf    = new Pdf($binary);
 
             return new Badge($pdf);
         });
 
-        $this->app->bind(MembersContract::class, function() {
+        $this->app->bind(MembersContract::class, function () {
             $collection = new Collection();
 
             return new Members($collection);

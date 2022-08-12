@@ -6,8 +6,8 @@ use Igrejanet\Badges\Factories\MemberFactory;
 use Igrejanet\Badges\Person\Company;
 use Knp\Snappy\Pdf;
 
-class Bootstrap {
-
+class Bootstrap
+{
     public static function getPdf()
     {
         //return new Pdf('/usr/local/bin/wkhtmltopdf');
@@ -16,8 +16,8 @@ class Bootstrap {
 
     public static function generateCompany()
     {
-        $logo = __DIR__.'/img/logo.png';
-        $type = 'Carteira de Identificação Ministerial';
+        $logo        = __DIR__ . '/img/logo.png';
+        $type        = 'Carteira de Identificação Ministerial';
         $companyInfo = [
             'II Igreja de Deus do Avivamento Bíblico',
             'Rua G, 336 - Vila Campos - Montes Claros - MG',
@@ -34,8 +34,8 @@ class Bootstrap {
 
     public static function generateMembers()
     {
-        $foto       = __DIR__.'/img/matheus.jpg';
-        $members    = MemberFactory::createMembers();
+        $foto    = __DIR__ . '/img/matheus.jpg';
+        $members = MemberFactory::createMembers();
 
         $members->add('Matheus Lopes Santos', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']);
         $members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'Diácono']);

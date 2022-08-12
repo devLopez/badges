@@ -7,14 +7,14 @@ class NameFormatterTest extends TestCase
 {
     public function testInstance()
     {
-        $formatter = new NameFormatter;
+        $formatter = new NameFormatter();
 
         $this->assertInstanceOf(NameFormatter::class, $formatter);
     }
 
     public function testNameGeneration()
     {
-        $formatter = (new NameFormatter)->generateName('Matheus Lopes dos Santos');
+        $formatter = (new NameFormatter())->generateName('Matheus Lopes dos Santos');
 
         $this->assertEquals('Matheus Lopes', $formatter);
     }

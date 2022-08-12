@@ -1,17 +1,18 @@
 <?php
 
     use Igrejanet\Badges\Person\Person;
+
     use PHPUnit\Framework\TestCase;
 
     class PersonTest extends TestCase
     {
         public function testPersonInstance()
         {
-            $name = 'Matheus Lopes Santos';
-            $job = 'Analista de Sistemas';
+            $name      = 'Matheus Lopes Santos';
+            $job       = 'Analista de Sistemas';
             $regNumber = 8364;
-            $photo = 'Matheus.jpg';
-            $info = [
+            $photo     = 'Matheus.jpg';
+            $info      = [
                 'RG' => 'MG 12.111.111'
             ];
 

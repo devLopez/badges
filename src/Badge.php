@@ -10,63 +10,24 @@ use Igrejanet\Badges\Person\Company;
 use Illuminate\Http\Response;
 use Knp\Snappy\Pdf;
 
-/**
- * Badge
- *
- * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 3.1.0
- * @since   05/04/2018
- * @package Igrejanet\Badges\Badge
- */
 class Badge implements BadgeContract
 {
-    /**
-     * @var MembersContract
-     */
-    protected $members;
+    protected MembersContract $members;
 
-    /**
-     * @var Company
-     */
-    protected $company;
+    protected Company $company;
 
-    /**
-     * @var Pdf
-     */
-    protected $pdf;
+    protected string $orientation = 'landscape';
 
-    /**
-     * @var string
-     */
-    protected $orientation = 'landscape';
+    protected bool $withBackPage = true;
 
-    /**
-     * @var boolean
-     */
-    protected $withBackPage = true;
+    protected string $css;
 
-    /**
-     * @var string
-     */
-    protected $css;
+    protected ?string $view = null;
 
-    /**
-     * @var string
-     */
-    protected $view = null;
+    protected string $html = '';
 
-    /**
-     * @var string
-     */
-    protected $html = '';
-
-    /**
-     * @param   Pdf $pdf
-     */
-    public function __construct(Pdf $pdf) {
-
-        $this->pdf = $pdf;
-
+    public function __construct(protected Pdf $pdf)
+    {
         $this->pdf->setOptions([
             'margin-left'   => 1,
             'margin-right'  => 1,
@@ -75,73 +36,48 @@ class Badge implements BadgeContract
         ]);
     }
 
-    /**
-     * @param   MembersContract  $members
-     * @return  $this
-     */
-    public function setMembers(MembersContract $members)
+    public function setMembers(MembersContract $members): static
     {
         $this->members = $members;
 
         return $this;
     }
 
-    /**
-     * @param   Company  $company
-     * @return  $this
-     */
-    public function setCompany(Company $company)
+    public function setCompany(Company $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @param   string  $orientation
-     * @return  $this
-     */
-    public function setOrientation(string $orientation)
+    public function setOrientation(string $orientation): static
     {
         $this->orientation = $orientation;
 
         return $this;
     }
 
-    /**
-     * @param   bool  $withBackPage
-     * @return  $this
-     */
-    public function withBackPage(bool $withBackPage)
+    public function withBackPage(bool $withBackPage): static
     {
         $this->withBackPage = $withBackPage;
 
         return $this;
     }
 
-    /**
-     * @param   string  $css
-     * @return  $this
-     */
-    public function loadCSS(string $css)
+    public function loadCSS(string $css): static
     {
         $this->css = file_get_contents($css);
 
         return $this;
     }
 
-    /**
-     * @param   string|null $view
-     * @return  $this
-     * @throws  WrongOrientationException
-     */
-    public function loadView(string $view = null)
+    public function loadView(string $view = null): static
     {
-        if ( ! in_array($this->orientation, ['landscape', 'portrait']) ) {
-            throw new WrongOrientationException;
+        if (!in_array($this->orientation, ['landscape', 'portrait'])) {
+            throw new WrongOrientationException();
         }
 
-        if ( $view ) {
+        if ($view) {
             $this->view = $view;
 
             return $this;
@@ -155,43 +91,31 @@ class Badge implements BadgeContract
         return $this;
     }
 
-    /**
-     * @param   bool  $download
-     * @param   string  $filename
-     * @return  Response
-     * @throws  EmptyMembersException
-     * @throws  WrongOrientationException
-     */
-    public function generate($download = false, $filename = 'cartoes.pdf') : Response
+    public function generate(bool $download = false, string $filename = 'cartoes.pdf'): Response
     {
-        if ( $this->members->retrieve()->isEmpty() ) {
-            throw new EmptyMembersException;
+        if ($this->members->retrieve()->isEmpty()) {
+            throw new EmptyMembersException();
         }
 
         $this->loadView();
 
-        $css            = $this->css;
-        $members        = $this->members->retrieve();
-        $hasBackPage    = $this->withBackPage;
-        $company        = $this->company;
+        $css         = $this->css;
+        $members     = $this->members->retrieve();
+        $hasBackPage = $this->withBackPage;
+        $company     = $this->company;
 
         $this->html = View::render($this->view, compact('css', 'members', 'hasBackPage', 'company'));
 
         return $this->toPdf($download, $filename);
     }
 
-    /**
-     * @param   bool $download
-     * @param   string $filename
-     * @return  Response
-     */
-    public function toPdf($download = false, $filename = 'cartoes.pdf') : Response
+    public function toPdf(bool $download = false, string $filename = 'cartoes.pdf'): Response
     {
         $file = ($download) ? 'attachment' : 'inline';
 
         return new Response($this->pdf->getOutputFromHtml($this->html), 200, [
-            'Content-Type'          => 'application/pdf',
-            'Content-Disposition'   => $file . '; filename="'. $file .'"'
+            'Content-Type'        => 'application/pdf',
+            'Content-Disposition' => $file . '; filename="' . $file . '"'
         ]);
     }
 }

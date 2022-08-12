@@ -1,14 +1,15 @@
 <?php
 
-    use PHPUnit\Framework\TestCase;
     use Igrejanet\Badges\Person\Company;
+
+    use PHPUnit\Framework\TestCase;
 
     class CompanyTest extends TestCase
     {
         public function testInstance()
         {
-            $logo = 'logo.png';
-            $type = 'Carteira de Identificação Ministerial';
+            $logo        = 'logo.png';
+            $type        = 'Carteira de Identificação Ministerial';
             $companyInfo = [
                 'II Igreja de Deus do Avivamento Bíblico',
                 'Rua G, 336 - Vila Campos - Montes Claros - MG',
@@ -21,7 +22,7 @@
             ];
 
             $company = new Company($logo, $type, $companyInfo, $cardInfo);
-            
+
             $this->assertInstanceOf(Company::class, $company);
             $this->assertEquals($type, $company->type);
             $this->assertEquals($companyInfo, $company->companyInfo);

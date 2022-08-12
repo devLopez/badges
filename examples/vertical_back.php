@@ -4,11 +4,11 @@ include './bootstrap.php';
 
 use Igrejanet\Badges\Badge;
 
-$members    = Bootstrap::generateMembers();
-$company    = Bootstrap::generateCompany();
+$members = Bootstrap::generateMembers();
+$company = Bootstrap::generateCompany();
 
-$badge      = new Badge(Bootstrap::getPdf());
-$response   = $badge->setMembers($members)
+$badge    = new Badge(Bootstrap::getPdf());
+$response = $badge->setMembers($members)
                     ->setCompany($company)
                     ->setOrientation('portrait')
                     ->generate();

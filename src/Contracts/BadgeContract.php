@@ -2,9 +2,9 @@
 
 namespace Igrejanet\Badges\Contracts;
 
+use Igrejanet\Badges\Person\Company;
 use Illuminate\Http\Response;
 use Knp\Snappy\Pdf;
-use Igrejanet\Badges\Person\Company;
 
 interface BadgeContract
 {
@@ -22,7 +22,7 @@ interface BadgeContract
 
     public function loadView(string $view = null);
 
-    public function generate() : Response;
+    public function generate(): Response;
 
-    public function toPdf() : Response;
+    public function toPdf(): Response;
 }
