@@ -7,25 +7,25 @@ use Igrejanet\Badges\Formatters\NameFormatter;
 
 class Person
 {
-    public string $shortName;
+    public readonly string $shortName;
 
-    public string $barcode;
+    public readonly ?string $barcode;
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
-        protected string $name,
-        protected string $job,
-        protected string $regNumber,
-        protected ?string $photo = null,
-        protected array $userInfo = [],
-        $barcode = true
+        public readonly string $name,
+        public readonly string $job,
+        public readonly string $regNumber,
+        public readonly ?string $photo = null,
+        public readonly array $userInfo = [],
+        $printBarcode = true
     ) {
         $this->shortName = NameFormatter::generateName($name);
 
-        if ($barcode) {
-            $this->barcode = BarcodeFactory::generate($regNumber);
-        }
+        $this->barcode = $printBarcode
+            ? BarcodeFactory::generate($regNumber)
+            : null;
     }
 }

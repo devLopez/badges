@@ -5,10 +5,10 @@ namespace Igrejanet\Badges\Person;
 class Company
 {
     public function __construct(
-        protected string $logo,
-        protected string $type,
-        protected array $companyInfo,
-        protected array $cardInfo
+        public readonly string $logo,
+        public readonly string $type,
+        public readonly array $companyInfo,
+        public readonly array $cardInfo
     ) {
     }
 }

@@ -7,23 +7,17 @@ use Illuminate\Support\Collection;
 
 class Members implements MembersContract
 {
-    public function __construct(protected Collection $members)
+    protected Collection $members;
+
+    public function __construct()
     {
+        $this->members = collect();
     }
 
-    /**
-     * @SuppressWarnings(PHPMD)
-     */
-    public function add(
-        string $name,
-        string $job,
-        string $regNumber,
-        ?string $photo = null,
-        array $userInfo = [],
-        bool $barcode = true
-    ) {
+    public function add(Person $person)
+    {
         $this->members->push(
-            new Person($name, $job, $regNumber, $photo, $userInfo, $barcode)
+            $person
         );
     }
 
