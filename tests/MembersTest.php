@@ -1,32 +1,32 @@
 <?php
 
-    use Igrejanet\Badges\Contracts\MembersContract;
+use Igrejanet\Badges\Contracts\MembersContract;
+use Igrejanet\Badges\Person\Members;
+use Igrejanet\Badges\Person\Person;
+use Illuminate\Support\Collection;
 
-    use Igrejanet\Badges\Factories\MemberFactory;
+it('should test instance', function () {
+    $members = new Members();
 
-    use Igrejanet\Badges\Person\Person;
+    expect($members)
+        ->toBeInstanceOf(MembersContract::class)
+        ->and($members->retrieve())
+        ->toBeInstanceOf(Collection::class);
+});
 
-    use PHPUnit\Framework\TestCase;
+it('should add person on members', function ($nome, $cargo, $registro, $foto, $info) {
+    $person = new Person($nome, $cargo, $registro, $foto, $info, false);
 
-    class MembersTest extends TestCase
-    {
-        public function testInstance()
-        {
-            $members = MemberFactory::createMembers();
+    $members = new Members();
+    $members->add($person);
 
-            $this->assertInstanceOf(MembersContract::class, $members);
-        }
-
-        public function testAddMembers()
-        {
-            $members = MemberFactory::createMembers();
-
-            $members->add('Matheus', 'Analista', 8364, 'matheus.jpg', ['RG' => 'MG 11.111.111'], false);
-            $members->add('Lopes', 'DBA', 8367, 'loeps.jpg', ['RG' => 'MG 14.131.121'], false);
-
-            $filledMember = $members->retrieve()->first();
-
-            $this->assertEquals('Matheus', $filledMember->name);
-            $this->assertInstanceOf(Person::class, $filledMember);
-        }
-    }
+    expect($members->retrieve())
+        ->toBeInstanceOf(Collection::class)
+        ->and($members->retrieve()->first())
+        ->toBeInstanceOf(Person::class)
+        ->and($members->retrieve()->first()->name)
+        ->toBe($nome);
+})->with([
+    ['Matheus', 'Analista', 8364, 'matheus.jpg', ['RG' => 'MG 11.111.111']],
+    ['Lopes', 'DBA', 8367, 'loeps.jpg', ['RG' => 'MG 14.131.121']],
+]);
