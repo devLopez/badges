@@ -3,6 +3,7 @@
     namespace Igrejanet\Badges\Contracts;
 
     use Igrejanet\Badges\Person\Person;
+
     use Illuminate\Support\Collection;
 
     interface MembersContract
