@@ -2,9 +2,7 @@
 
 use Igrejanet\Badges\Badge;
 use Igrejanet\Badges\Contracts\BadgeContract;
-use Igrejanet\Badges\Person\Company;
-use Igrejanet\Badges\Person\Members;
-use Igrejanet\Badges\Person\Person;
+use Igrejanet\Badges\Person\{Company, Members, Person};
 use Illuminate\Http\Response;
 use Knp\Snappy\Pdf;
 
@@ -56,7 +54,8 @@ it('should test instances', function () {
     $badge    = new Badge(new Pdf($pdf));
     $response = $badge->setMembers($members)->setCompany($company)->generate();
 
-    $this->assertInstanceOf(Badge::class, $badge);
-    $this->assertInstanceOf(BadgeContract::class, $badge);
-    $this->assertInstanceOf(Response::class, $response);
+    expect($badge)
+        ->toBeInstanceOf(Badge::class)
+        ->and($badge)->toBeInstanceOf(BadgeContract::class)
+        ->and($response)->toBeInstanceOf(Response::class);
 });

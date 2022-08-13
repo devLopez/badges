@@ -20,8 +20,9 @@ it('should test instance info', function () {
 
     $company = new Company($logo, $type, $companyInfo, $cardInfo);
 
-    $this->assertInstanceOf(Company::class, $company);
-    $this->assertEquals($type, $company->type);
-    $this->assertEquals($companyInfo, $company->companyInfo);
-    $this->assertEquals($cardInfo, $company->cardInfo);
+    expect($company)
+        ->toBeInstanceOf(Company::class)
+        ->and($company->type)->toBe($type)
+        ->and($company->companyInfo)->toBe($companyInfo)
+        ->and($company->cardInfo)->toBe($cardInfo);
 });

@@ -1,21 +1,12 @@
 <?php
 
 use Igrejanet\Badges\Formatters\NameFormatter;
-use PHPUnit\Framework\TestCase;
 
-class NameFormatterTest extends TestCase
-{
-    public function testInstance()
-    {
-        $formatter = new NameFormatter();
+it('It should test ame generation', function ($name, $expected) {
+    $value = NameFormatter::generateName($name);
 
-        $this->assertInstanceOf(NameFormatter::class, $formatter);
-    }
-
-    public function testNameGeneration()
-    {
-        $formatter = (new NameFormatter())->generateName('Matheus Lopes dos Santos');
-
-        $this->assertEquals('Matheus Lopes', $formatter);
-    }
-}
+    expect($value)->toBe($expected);
+})->with([
+    ['Matheus Lopes dos Santos', 'Matheus Lopes'],
+    ['Matheus dos Santos', 'Matheus'],
+]);
