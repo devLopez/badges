@@ -7,18 +7,20 @@
     $pages = ($hasBackPage) ? $members->chunk(2) : $members->chunk(6);
 ?>
 
-<?php foreach ( $pages as $members ) : ?>
+<?php foreach ($pages as $members) : ?>
 
     <div class="page">
-        <?php foreach ( $members as $member ) : ?>
+        <?php foreach ($members as $member) : ?>
 
-            <div class="card vertical-card <?= ( ! $hasBackPage )  ? 'no-back-page': '' ?>">
+            <div class="card vertical-card <?= (!$hasBackPage) ? 'no-back-page' : '' ?>">
                 <div class="front-page">
                     <div class="logo">
                         <img src="<?= $company->logo ?>" alt="">
                     </div>
+
                     <div class="picture">
-                        <?php $alt = ( $member->photo !== null ) ? $member->name : '' ?>
+                        <?php $alt = ($member->photo !== null) ? $member->name : '' ?>
+
                         <img src="<?= $member->photo ?>" alt="<?= $alt ?>">
                     </div>
 
@@ -33,26 +35,27 @@
                     </div>
                 </div>
 
-                <?php if( $hasBackPage ) : ?>
+                <?php if ($hasBackPage) : ?>
                     <div class="back-page">
                         <div class="card-info text-upper">
                             <span><?= $company->type ?></span>
-                            <span><?= str_pad(date('Ymd'), 11, 0, STR_PAD_LEFT)?></span>
+                            <span><?= str_pad(date('Ymd'), 11, 0, STR_PAD_LEFT) ?></span>
                         </div>
+
                         <div class="user-info">
-                            <?php foreach ( $member->userInfo as $key => $info ) : ?>
+                            <?php foreach ($member->userInfo as $key => $info) : ?>
                                 <span>
-                                    <b><?= $key ?>: </b> <?= $info?>
+                                    <b><?= $key ?>: </b> <?= $info ?>
                                 </span><br>
                             <?php endforeach; ?>
                         </div>
                         <div class="company-info">
-                            <?php foreach ( $company->companyInfo as $c ) : ?>
-                                <?= $c?><br>
+                            <?php foreach ($company->companyInfo as $c) : ?>
+                                <?= $c ?><br>
                             <?php endforeach; ?>
                         </div>
                         <div class="general-info">
-                            <?php foreach ( $company->cardInfo as $c ) : ?>
+                            <?php foreach ($company->cardInfo as $c) : ?>
                                 * <?= $c ?><br>
                             <?php endforeach; ?>
                         </div>
@@ -62,9 +65,9 @@
                             </div>
                         </div>
                     </div>
-                <?php endif;?>
+                <?php endif; ?>
             </div>
-        <?php endforeach;?>
+        <?php endforeach; ?>
 
     </div>
 
