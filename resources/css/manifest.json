@@ -1,0 +1,12 @@
+{
+  "resources/scss/portrait.scss": {
+    "file": "portrait.css",
+    "src": "resources/scss/portrait.scss",
+    "isEntry": true
+  },
+  "resources/scss/landscape.scss": {
+    "file": "landscape.css",
+    "src": "resources/scss/landscape.scss",
+    "isEntry": true
+  }
+}

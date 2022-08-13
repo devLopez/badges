@@ -1,14 +1,19 @@
 {
   "private": true,
-  "name": "cartoes",
-  "version": "1.0.0",
-  "description": "Criacao de cartoes e crachas",
-  "main": "index.js",
+  "name": "badges",
   "author": "Matheus Lopes Santos <fale_com_lope@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "laravel-vite-plugin": "^0.5.0",
+    "lodash": "^4.17.19",
+    "postcss": "^8.1.14",
+    "sass": "^1.54.4",
+    "vite": "^3.0.0"
+  },
   "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-csso": "^3.0.0",
-    "gulp-sass": "^3.1.0"
   }
 }
