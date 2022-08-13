@@ -9,8 +9,8 @@ $company = Bootstrap::generateCompany();
 
 $badge    = new Badge(Bootstrap::getPdf());
 $response = $badge->setMembers($members)
-                    ->setCompany($company)
-                    ->withBackPage(false)
-                    ->generate();
+    ->setCompany($company)
+    ->withBackPage(false)
+    ->generate();
 
 $response->send();
