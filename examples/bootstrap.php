@@ -41,7 +41,7 @@ class Bootstrap
 
         $members = new Members();
 
-        foreach([
+        foreach ([
             new Person('Matheus Lopes Santos', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']),
             new Person('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'Diácono']),
             new Person('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'Diácono']),

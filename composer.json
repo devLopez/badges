@@ -40,5 +40,13 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "verify": [
+            "./vendor/bin/pint --test",
+            "./vendor/bin/phpcs --standard=phpcs.xml",
+            "./vendor/bin/phpmd src text ./phpmd.xml",
+            "./vendor/bin/pest"
+        ]
     }
 }
