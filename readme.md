@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/devLopez/badges.svg?branch=master)](https://travis-ci.org/devLopez/badges)
+[![Build Status](https://app.travis-ci.com/devLopez/badges.svg?branch=master)](https://travis-ci.org/devLopez/badges)
 
 # Igrejanet Badges
 
@@ -26,9 +26,9 @@ Para utilizar o pacote voçê pode fazer da seguinte forma:
 require_once './vendor/autoload.php';
 
 use Igrejanet\Badges\Badge;
-use Igrejanet\Badges\MemberFactory;
 use Igrejanet\Badges\Person\Company;
-use Knp\Snappy\Pdf;
+use Igrejanet\Badges\Person\Members;
+use Igrejanet\Badges\Person\Person;use Knp\Snappy\Pdf;
 
 // Você pode setar uma localização diferente para o gerador
 // mas o mesmo já vem listado como dependência no composer
@@ -51,17 +51,22 @@ $cardInfo = [
 $company = new Company($logo, $type, $companyInfo, $cardInfo);
 
 // Dados dos usuarios
-$foto       = __DIR__.'/img/matheus.jpg';
-$members    = MemberFactory::createMembers();
+$foto    = __DIR__.'/img/matheus.jpg';
+$members = new Members();
 
-$members->add('Matheus', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']);
-$members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'DBA']);
+$members->add(
+    new Person('Matheus', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111'])
+);
+
+$members->add(
+    new Person('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'DBA'])
+);
 
 // Gera as carteirinhas
-$badge      = new Badge($pdf);
-$response   = $badge->setMembers($members)
-                    ->setCompany($company)
-                    ->generate();
+$badge    = new Badge($pdf);
+$response = $badge->setMembers($members)
+    ->setCompany($company)
+    ->generate();
 
 $response->send();
 ```
@@ -87,23 +92,31 @@ class UserController extends Controller
     
     public function __construct(Badges $badges, Members $members)
     {
-        $this->badges   = $badges;
-        $this->members  = $members;
+        $this->badges  = $badges;
+        $this->members = $members;
     }
     
     public function genBadges()
     {
         $foto ='img/matheus.jpg';
-        $this->members->add('Matheus', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111']);
-        $this->members->add('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'DBA']);
         
+        $this->members->add(
+            new Person('Matheus', 'Analista', 8364, $foto, ['RG' => 'MG 11.111.111'])
+        );
+
+        $this->members->add(
+            new Person('Lopes', 'DBA', 8399, $foto, ['RG' => 'MG 14.131.121', 'CPF' => '101.384.146-88', 'Cargo' => 'DBA'])
+        );
+
         $logo = 'img/logo.png';
         $type = 'Carteira de Identificação Ministerial';
+
         $companyInfo = [
             'II Igreja de Deus do Avivamento Bíblico',
             'Rua G, 336 - Vila Campos - Montes Claros - MG',
             'Tel.: (38)4009-5777 - idabmoc@gmail.com.br - http://idabmoc.com'
         ];
+
         $cardInfo = [
             'Uso exclusivo para identificação ministerial',
             'Esta carteira é pessoal e intransferível',
@@ -113,9 +126,9 @@ class UserController extends Controller
         $company = new Company($logo, $type, $companyInfo, $cardInfo);
         
         return $this->badges
-                    ->setMembers($this->members)
-                    ->setCompany($company)
-                    ->generate();
+            ->setMembers($this->members)
+            ->setCompany($company)
+            ->generate();
     }
 }
 ```
